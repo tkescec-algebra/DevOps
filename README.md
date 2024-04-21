@@ -217,5 +217,79 @@ podman run -d \
     wordpress:latest
 ```
 
+In case you needed to delete containers to replace them with updated images or for any other
+reason, all the files in the read write layer of the image would be lost. To persist the data bind
+mounts and volumes are used.
+Delete the old mysql container, and create a new one which will bind mount the container
+directory /var/lib/mysql to host directory /home/student/mysql. Wait for the container to start
+and examine the host directory. 
+```bash
+podman stop mysql
+podman rm mysql
+
+podman run -d \
+    --name mysql \
+    --network labnet \
+    -p 3306:3306 \
+    -e MYSQL_ROOT_PASSWORD=DB15secure! \
+    -e MYSQL_DATABASE=wordpress \
+    -e MYSQL_USER=student \
+    -e MYSQL_PASSWORD=DB15secure! \
+    -v /home/student/mysql:/var/lib/mysql \
+    mysql:latest
+```
+
+Recreate the previously created container, this time using volume instead of a bind mout.
+```bash
+podman stop mysql
+podman rm mysql
+
+podman volume create mysql_data
+
+podman run -d \
+    --name mysql \
+    --network labnet \
+    -p 3306:3306 \
+    -e MYSQL_ROOT_PASSWORD=DB15secure! \
+    -e MYSQL_DATABASE=wordpress \
+    -e MYSQL_USER=student \
+    -e MYSQL_PASSWORD=DB15secure! \
+    -v mysql_data:/var/lib/mysql \
+    mysql:latest
+```
+
+Install podman-compose package. 
+```bash
+sudo dnf install -y podman-compose
+```
 
 
+Create a compose file which you can use to deploy wordpress and mysql. 
+```yaml
+version: '3'
+
+services:
+  wordpress:
+    image: wordpress:latest
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: student
+      WORDPRESS_DB_PASSWORD: DB15secure!
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: DB15secure!
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: student
+      MYSQL_PASSWORD: DB15secure!
+```
+```bash
+podman-compose up -d
+podman-compose down
+```
