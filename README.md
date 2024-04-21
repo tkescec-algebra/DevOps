@@ -200,7 +200,22 @@ podman run -d \
     -e MYSQL_PASSWORD=DB15secure! \
     mysql:latest
 ```
-
+Create a wordpress container by using official wordpress
+image(https://hub.docker.com/_/wordpress). It should be started in the background, connected
+to the labnet network and it should publish port 80 from the container to port 8080 on the host.
+Configure environment variables to connect to database container created in the previous step.
+Wen referencing the database host use mysql(name of the previous container) as the host. 
+```bash
+podman run -d \
+    --name wordpress \
+    --network labnet \
+    -p 8080:80 \
+    -e WORDPRESS_DB_HOST=mysql \
+    -e WORDPRESS_DB_NAME=wordpress \
+    -e WORDPRESS_DB_USER=student \
+    -e WORDPRESS_DB_PASSWORD=DB15secure! \
+    wordpress:latest
+```
 
 
 
