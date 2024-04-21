@@ -4,6 +4,10 @@
 Url: https://sso.redhat.com/
 Password: N?f9Z2r4@-s&_dh
 
+## Docker and Podamn documentation
+Url: https://docs.docker.com/
+Url: https://docs.podman.io/en/latest/
+
 ## Podman
 
 To find the latest Nginx container image on Docker Hub using podman:
@@ -115,6 +119,37 @@ CMD ["node", "src/index.js"]
 EXPOSE 3000
 ```
 
+Build image with new tag
+```bash
+podman build -t getting-started-app:0.0.1 .
+```
+
+Build image using Dockerfile
+```bash
+podman build -f Dockerfile -t getting-started-app:0.0.1 .
+```
+
+Inspect the image contents by using the following command:
+```bash
+podman inspect getting-started-app:0.0.1
+```
+
+See the difference between these two images by using the following command:
+```bash
+podman diff getting-started-app getting-started-app:0.0.1
+```
+
+Push the image to the Docker Hub registry:
+```bash
+podman login
+podman push getting-started-app:0.0.1
+```
+
+Change tag of image
+```bash
+podman tag getting-started-app:0.0.1 getting-started-app:latest
+```
+
 Remove image
 ```bash
 podman rmi getting-started-app
@@ -131,5 +166,41 @@ Show logs for container
 ```bash
 podman logs myapp
 ```
+
+## Networking
+
+To list all the networks on the system:
+```bash
+podman network ls
+```
+Inspect the network configuration of the default podman network:
+```bash
+podman network inspect podman
+```
+Create a custom network which will have dns enabled.
+```bash
+podman network create labnet
+```
+
+Create a mysql database container by using official mysql
+image(https://hub.docker.com/_/mysql). It should randomize the root password, create a
+database called wordpress and a user called student with password DB15secure!. It should be
+started in the background and connected to labnet network. Name the container mysql.
+```bash
+# Generate a random password for root
+ROOT_PASSWORD=$(openssl rand -base64 12)
+
+# Create the MySQL container
+podman run -d \
+    --name mysql \
+    --network labnet \
+    -e MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD \
+    -e MYSQL_DATABASE=wordpress \
+    -e MYSQL_USER=student \
+    -e MYSQL_PASSWORD=DB15secure! \
+    mysql:latest
+```
+
+
 
 
