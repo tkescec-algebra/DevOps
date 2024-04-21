@@ -264,7 +264,7 @@ sudo dnf install -y podman-compose
 ```
 
 
-Create a compose file which you can use to deploy wordpress and mysql. 
+Create a compose file 'docker-compose.yml' which you can use to deploy wordpress and mysql. 
 ```yaml
 version: '3'
 
