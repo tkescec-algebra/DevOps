@@ -101,17 +101,18 @@ To containerize the application found at the provided GitHub repository
 ```bash
 git clone https://github.com/docker/getting-started-app.git
 cd getting-started-app
+touch Dockerfile
 podman build -t getting-started-app .
 podman run -d -p 3000:3000 --name myapp getting-started-app
 ```
 Create docker file
 ```Dockefile
-FROM node:12-alpine
-WORKDIR /usr/src/app
-COPY package*.json ./
-RUN npm install --only=production
+FROM node:18-alpine
+WORKDIR /app
 COPY . .
-CMD [ "npm", "start" ]
+RUN yarn install --production
+CMD ["node", "src/index.js"]
+EXPOSE 3000
 ```
 
 Remove image
