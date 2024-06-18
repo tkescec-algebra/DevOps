@@ -4,6 +4,10 @@
 Url: https://sso.redhat.com/
 Password: N?f9Z2r4@-s&_dh
 
+## Docker Hub
+user: codetome1503
+pass: N#:22=&b]<W5)Vn
+
 ## Docker and Podamn documentation
 Url: https://docs.docker.com/
 Url: https://docs.podman.io/en/latest/
@@ -141,7 +145,7 @@ podman diff getting-started-app getting-started-app:0.0.1
 
 Push the image to the Docker Hub registry:
 ```bash
-podman login
+podman login docker.io
 podman push getting-started-app:0.0.1
 ```
 

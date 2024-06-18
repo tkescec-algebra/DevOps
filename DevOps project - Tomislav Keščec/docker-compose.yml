@@ -1,0 +1,39 @@
+version: '3.7'
+services:
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: tempconvert 
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - temp-network
+
+  tempconverter:
+    image: codetome1503/tempconverter:latest
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      DB_USER: user
+      DB_PASS: pass
+      DB_HOST: tempstack_db 
+      DB_NAME: tempconvert
+      STUDENT: Tomislav Keščec
+      COLLEGE: Algebra University College
+    deploy:
+      replicas: 2
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - temp-network
+
+networks:
+  temp-network:
+    external: true
