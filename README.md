@@ -1,5 +1,15 @@
 # DevOps
 
+For the upcoming Intro to DevOps exams use the following information to authenticate to OpenShift cluster:
+Username: tkescec
+Password: XV72Z38E61
+Console URL: https://console-openshift-console.apps.vuacloud.vua.cloud 
+API URL:  https://api.vuacloud.vua.cloud:6443 
+
+Cluster is accessible only from your VM in vcsa7.vua.cloud environment.
+
+Review instructions available on GitHub https://github.com/jstanesic/intro_to_devops_exam.
+
 ## Red Hat Academy
 Url: https://sso.redhat.com/
 Password: N?f9Z2r4@-s&_dh
