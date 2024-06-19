@@ -1,5 +1,17 @@
 # DevOps
 
+http://vcsa7.vua.cloud/
+
+username: tkescec
+password: Pa$$w0rd
+
+kada se pokrene virtualka
+user: student
+pass: student
+
+su -
+pass: centos
+
 For the upcoming Intro to DevOps exams use the following information to authenticate to OpenShift cluster:
 Username: tkescec
 Password: XV72Z38E61
