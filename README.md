@@ -263,6 +263,16 @@ podman run -d \
     -e MYSQL_PASSWORD=DB15secure! \
     -v /home/student/mysql:/var/lib/mysql \
     mysql:latest
+
+podman run -d \
+    --name postgres \
+    --network labnet \
+    -p 5432:5432 \
+    -e POSTGRES_DB=wordpress \
+    -e POSTGRES_USER=student \
+    -e POSTGRES_PASSWORD=DB15secure! \
+    -v /home/student/postgres:/var/lib/postgresql/data \
+    postgres:latest
 ```
 
 Recreate the previously created container, this time using volume instead of a bind mout.
