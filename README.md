@@ -329,3 +329,55 @@ services:
 podman-compose up -d
 podman-compose down
 ```
+
+## OpenShift
+```bash
+oc login -u developer -p developer https://api.ocp4.example.com:6443
+```
+
+Identify the URL for the OpenShift web console.
+```bash
+oc whoami --show-console
+```
+
+Identify the URL for the OpenShift API.
+```bash
+oc whoami --show-server
+```
+
+```bash
+oc new-project myapp
+oc cluster-info
+oc api-versions
+oc get clusteroperator
+oc get pod
+oc get node
+oc get all
+oc create -f pod.yaml
+oc delete pod quotes-ui
+oc get clusteroperators dns -o yaml
+```
+
+- A container is an encapsulated process that includes the required runtime dependencies for an application to run.
+- Containerization addresses the application development challenges around code portability, to aid in consistently running an application from diverse environments.
+- Containerization also aims to modularize applications to improve development and maintenance on the various components of the application.
+- When running containers at scale, it becomes challenging to configure and deliver high availability applications and to set up networking without a container platform, such as Kubernetes.
+- Pods are the smallest organizational unit for a containerized application in a Kubernetes cluster.
+- Red Hat OpenShift Container Platform (RHOCP) adds enterprise-class functions to the Kubernetes container platform to deliver the wider business needs.
+- Most administrative tasks that cluster administrators and developers perform are available through the RHOCP web console.
+- Logs, metrics, alerts, terminal connections to the nodes and pods in the cluster, and many other features are available through the RHOCP web console.
+
+## Kubernetes and OpenShift Resources
+Kubernetes uses API resource objects to represent the intended state of everything in the cluster. All administrative tasks require creating, viewing, and changing the API resources. Use the oc api-resources command to view the Kubernetes resources.
+
+```bash
+oc api-resources
+oc api-resources --namespaced=false
+oc api-resources --api-group ''
+oc explain deployments
+```
+
+## Kubernetes CLI
+```bash
+kubectl version --client
+kubectl explain pod
