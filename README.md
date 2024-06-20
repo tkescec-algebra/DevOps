@@ -1,6 +1,7 @@
 # DevOps
 
 https://docs.google.com/document/d/1_oZzMH-bWVhYSkoR_QNbnvcISj3RArEy/edit
+
 https://docs.google.com/document/d/1-MPcdzw1Jtm8Sctjk1HRYtZT3TkWsPoeglCbaPm2MFw/edit
 
 http://vcsa7.vua.cloud/
