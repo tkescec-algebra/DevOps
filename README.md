@@ -1,39 +1,5 @@
 # DevOps
 
-https://docs.google.com/document/d/1_oZzMH-bWVhYSkoR_QNbnvcISj3RArEy/edit
-
-https://docs.google.com/document/d/1-MPcdzw1Jtm8Sctjk1HRYtZT3TkWsPoeglCbaPm2MFw/edit
-
-http://vcsa7.vua.cloud/
-
-username: tkescec
-password: Pa$$w0rd
-
-kada se pokrene virtualka
-user: student
-pass: student
-
-su -
-pass: centos
-
-For the upcoming Intro to DevOps exams use the following information to authenticate to OpenShift cluster:
-Username: tkescec
-Password: XV72Z38E61
-Console URL: https://console-openshift-console.apps.vuacloud.vua.cloud 
-API URL:  https://api.vuacloud.vua.cloud:6443 
-
-Cluster is accessible only from your VM in vcsa7.vua.cloud environment.
-
-Review instructions available on GitHub https://github.com/jstanesic/intro_to_devops_exam.
-
-## Red Hat Academy
-Url: https://sso.redhat.com/
-Password: N?f9Z2r4@-s&_dh
-
-## Docker Hub
-user: codetome1503
-pass: N#:22=&b]<W5)Vn
-
 ## Docker and Podamn documentation
 Url: https://docs.docker.com/
 Url: https://docs.podman.io/en/latest/
